@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b3ia2jnqbsth2"]
+
+[ext_resource type="Script" uid="uid://bkthspp7kapis" path="res://Logic/bird.gd" id="1_6w2wo"]
+[ext_resource type="Texture2D" uid="uid://bes65vl3bx480" path="res://Gimp_Files/Bird_Wing_Down.png" id="2_67or5"]
+[ext_resource type="Texture2D" uid="uid://cthna0hrfdf34" path="res://Gimp_Files/Bird_Wing_Up.png" id="3_mw7lr"]
+[ext_resource type="Texture2D" uid="uid://f4ytdbdh3bp1" path="res://Gimp_Files/Floor.png" id="4_45gv6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oqvhg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_67or5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mw7lr")
+}],
+"loop": true,
+"name": &"Flap",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3p17"]
+size = Vector2(17, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5n6s"]
+size = Vector2(300, 23)
+
+[node name="Node2D" type="Node2D" unique_id=1182742471]
+
+[node name="Bird" type="Area2D" parent="." unique_id=475067402]
+script = ExtResource("1_6w2wo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bird" unique_id=1324712]
+sprite_frames = SubResource("SpriteFrames_oqvhg")
+animation = &"Flap"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird" unique_id=1775459992]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_w3p17")
+
+[node name="Label" type="Label" parent="." unique_id=166077628]
+offset_left = 15.0
+offset_top = -87.0
+offset_right = 173.0
+offset_bottom = -38.0
+text = "Placeholder number
+                 5"
+
+[node name="Floor" type="Area2D" parent="." unique_id=107039605]
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=1138048981]
+position = Vector2(150, 232)
+texture = ExtResource("4_45gv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1258676715]
+position = Vector2(150, 232.5)
+shape = SubResource("RectangleShape2D_x5n6s")
