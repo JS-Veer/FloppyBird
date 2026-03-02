@@ -27,8 +27,16 @@ size = Vector2(300, 23)
 
 [node name="Node2D" type="Node2D" unique_id=1182742471]
 
+[node name="Camera2D2" type="Camera2D" parent="." unique_id=285280330]
+position = Vector2(-1, -72)
+anchor_mode = 0
+limit_left = 0
+limit_top = -80
+limit_right = 300
+limit_bottom = 244
+
 [node name="Bird" type="Area2D" parent="." unique_id=475067402]
-position = Vector2(0, 100)
+position = Vector2(41, 101)
 script = ExtResource("1_6w2wo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bird" unique_id=1324712]
@@ -42,6 +50,7 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_w3p17")
 
 [node name="Camera2D" type="Camera2D" parent="Bird" unique_id=146554244]
+visible = false
 
 [node name="Label" type="Label" parent="." unique_id=166077628]
 offset_left = 73.0
@@ -60,5 +69,18 @@ texture = ExtResource("4_45gv6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1258676715]
 position = Vector2(150, 232.5)
 shape = SubResource("RectangleShape2D_x5n6s")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1925587033]
+scroll_offset = Vector2(1, 1)
+repeat_size = Vector2(15, 0)
+autoscroll = Vector2(-15, 0)
+repeat_times = 45
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=791930931]
+position = Vector2(35, 164)
+texture = ExtResource("4_45gv6")
+centered = false
 
 [connection signal="area_entered" from="Floor" to="Bird" method="_on_floor_area_entered"]

@@ -1,6 +1,6 @@
 extends Area2D
 
-const DEFAULT_HOR_SPEED = 20
+const DEFAULT_HOR_SPEED = 0
 const DEFAULT_VER_SPEED = -75
 const g = 100
 
