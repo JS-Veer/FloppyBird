@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bes65vl3bx480" path="res://Gimp_Files/Bird_Wing_Down.png" id="2_67or5"]
 [ext_resource type="Texture2D" uid="uid://cthna0hrfdf34" path="res://Gimp_Files/Bird_Wing_Up.png" id="3_mw7lr"]
 [ext_resource type="Texture2D" uid="uid://f4ytdbdh3bp1" path="res://Gimp_Files/Floor.png" id="4_45gv6"]
+[ext_resource type="Script" uid="uid://c1wg2x7knktn5" path="res://Logic/Pipe.gd" id="5_67or5"]
+[ext_resource type="Script" uid="uid://bfs5ugds1ksag" path="res://Logic/Pause.gd" id="6_mw7lr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oqvhg"]
 animations = [{
@@ -42,8 +44,7 @@ script = ExtResource("1_6w2wo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bird" unique_id=1324712]
 sprite_frames = SubResource("SpriteFrames_oqvhg")
 animation = &"Flap"
-frame = 1
-frame_progress = 0.1721983
+frame_progress = 0.033824936
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird" unique_id=1775459992]
 position = Vector2(-0.5, -0.5)
@@ -60,9 +61,23 @@ offset_bottom = -23.0
 text = "Placeholder number
                  5"
 
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1925587033]
+scroll_offset = Vector2(1, 1)
+repeat_size = Vector2(15, 0)
+autoscroll = Vector2(-30, 0)
+repeat_times = 90
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=791930931]
+position = Vector2(27, 220)
+texture = ExtResource("4_45gv6")
+centered = false
+
 [node name="Floor" type="Area2D" parent="." unique_id=107039605]
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=1138048981]
+visible = false
 position = Vector2(150, 232)
 texture = ExtResource("4_45gv6")
 
@@ -70,17 +85,43 @@ texture = ExtResource("4_45gv6")
 position = Vector2(150, 232.5)
 shape = SubResource("RectangleShape2D_x5n6s")
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1925587033]
-scroll_offset = Vector2(1, 1)
-repeat_size = Vector2(15, 0)
-autoscroll = Vector2(-15, 0)
-repeat_times = 45
-follow_viewport = false
-ignore_camera_scroll = true
+[node name="Area2D" type="Area2D" parent="." unique_id=1489766578]
+script = ExtResource("5_67or5")
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=791930931]
-position = Vector2(35, 164)
-texture = ExtResource("4_45gv6")
-centered = false
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=627691498]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1104328801]
+
+[node name="Control" type="Control" parent="." unique_id=79784666]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 94.0
+offset_top = 53.0
+offset_right = 229.0
+offset_bottom = 148.0
+
+[node name="PausePanel" type="PanelContainer" parent="Control" unique_id=614448118]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 12.0
+offset_right = 85.0
+offset_bottom = 48.0
+script = ExtResource("6_mw7lr")
+
+[node name="TextEdit" type="TextEdit" parent="Control/PausePanel" unique_id=1594384550]
+layout_mode = 2
+text = "PAUSE"
+
+[node name="RestartPanel" type="PanelContainer" parent="Control" unique_id=1916039608]
+layout_mode = 0
+offset_left = -33.0
+offset_top = 2.0
+offset_right = 173.0
+offset_bottom = 58.0
+
+[node name="TextEdit" type="TextEdit" parent="Control/RestartPanel" unique_id=1957883748]
+layout_mode = 2
+text = "Press escape to restart"
 
 [connection signal="area_entered" from="Floor" to="Bird" method="_on_floor_area_entered"]
