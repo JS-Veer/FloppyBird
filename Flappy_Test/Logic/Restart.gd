@@ -1,5 +1,4 @@
 extends PanelContainer
-# @onready var Pause_Panel = $PausePanel
 var death = false
 
 
@@ -7,23 +6,16 @@ var death = false
 func _ready() -> void:
 	death = false
 	hide()
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Escape") and death == false:
-		pause_Game_Check()  
-
-func pause_Game_Check():
-	if get_tree().paused == true:
-		hide()
-		get_tree().paused = false
-	elif get_tree().paused == false:
-		show()
-		get_tree().paused = true
-
+	if death == true and Input.is_action_just_pressed("Enter"):
+		get_tree().paused = false 
+		get_tree().reload_current_scene() 
 
 func _on_floor_area_entered(area: Area2D) -> void:
 	if area.name == "Bird":
+		show()
+		get_tree().paused = true
 		death = true
+		
