@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bes65vl3bx480" path="res://Gimp_Files/Bird_Wing_Down.png" id="2_67or5"]
 [ext_resource type="Texture2D" uid="uid://cthna0hrfdf34" path="res://Gimp_Files/Bird_Wing_Up.png" id="3_mw7lr"]
 [ext_resource type="Texture2D" uid="uid://f4ytdbdh3bp1" path="res://Gimp_Files/Floor.png" id="4_45gv6"]
-[ext_resource type="Script" path="res://Logic/Pipe.gd" id="5_67or5"]
+[ext_resource type="Script" uid="uid://c1wg2x7knktn5" path="res://Logic/Pipe.gd" id="5_67or5"]
+[ext_resource type="Texture2D" uid="uid://dvdomw7yt1eqe" path="res://Gimp_Files/Pipe.png" id="6_12ibr"]
 [ext_resource type="Script" uid="uid://bfs5ugds1ksag" path="res://Logic/Pause.gd" id="6_mw7lr"]
 [ext_resource type="Script" uid="uid://cupdq7lfx06uc" path="res://Logic/Restart.gd" id="7_45gv6"]
 
@@ -62,6 +63,45 @@ offset_bottom = -23.0
 text = "Placeholder number
                  5"
 
+[node name="Pipe4" type="Area2D" parent="." unique_id=460404273]
+position = Vector2(339, 6)
+script = ExtResource("5_67or5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipe4" unique_id=1888143083]
+texture = ExtResource("6_12ibr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe4" unique_id=629864898]
+
+[node name="Pipe3" type="Area2D" parent="." unique_id=1700334223]
+position = Vector2(1017, 18)
+script = ExtResource("5_67or5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipe3" unique_id=806030490]
+position = Vector2(-420, -14)
+texture = ExtResource("6_12ibr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe3" unique_id=1914995224]
+
+[node name="Pipe2" type="Area2D" parent="." unique_id=727690289]
+position = Vector2(678, 12)
+script = ExtResource("5_67or5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipe2" unique_id=1434665333]
+position = Vector2(-206, -1)
+texture = ExtResource("6_12ibr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe2" unique_id=2086314955]
+
+[node name="Pipe" type="Area2D" parent="." unique_id=1489766578]
+position = Vector2(339, 6)
+script = ExtResource("5_67or5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipe" unique_id=627691498]
+position = Vector2(383, 1)
+texture = ExtResource("6_12ibr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe" unique_id=1104328801]
+
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1925587033]
 scroll_offset = Vector2(1, 1)
 repeat_size = Vector2(15, 0)
@@ -85,13 +125,6 @@ texture = ExtResource("4_45gv6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1258676715]
 position = Vector2(150, 232.5)
 shape = SubResource("RectangleShape2D_x5n6s")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1489766578]
-script = ExtResource("5_67or5")
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=627691498]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1104328801]
 
 [node name="Control" type="Control" parent="." unique_id=79784666]
 process_mode = 3

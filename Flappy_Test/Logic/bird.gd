@@ -1,19 +1,19 @@
 extends Area2D
 
-const DEFAULT_HOR_SPEED = 0
-const DEFAULT_VER_SPEED = -75
-const g = 100
+const DEFAULT_HOR_SPEED : int = 0
+const DEFAULT_VER_SPEED : int = -75
+const g : int = 100
 
-var hor_speed = DEFAULT_HOR_SPEED
-var ver_speed = DEFAULT_VER_SPEED
-var rot_Var = 0
-var a = -45
+var hor_speed : int = DEFAULT_HOR_SPEED
+var ver_speed : float = DEFAULT_VER_SPEED
+var rot_Var : int = 0
+var a : int = -45
 
-@onready var _initial_pos = position
-@onready var _initial_rot = rotation
+@onready var _initial_pos : Vector2 = position
+@onready var _initial_rot : float = rotation
 @onready var _animated_sprite = $AnimatedSprite2D
 
-func _process(delta):
+func _process(delta : float) -> void:
 	_animated_sprite.play("Flap")
 	ver_speed += delta * g
 	if Input.is_action_just_pressed("Space"):
