@@ -73,14 +73,6 @@ limit_top = -80
 limit_right = 290
 limit_bottom = 244
 
-[node name="Label" type="Label" parent="." unique_id=166077628]
-offset_left = 73.0
-offset_top = -72.0
-offset_right = 231.0
-offset_bottom = -23.0
-text = "Test"
-script = ExtResource("1_eg0eg")
-
 [node name="Pipe4" type="Area2D" parent="." unique_id=1236173377]
 position = Vector2(670, 0)
 script = ExtResource("5_67or5")
@@ -140,6 +132,14 @@ shape = SubResource("RectangleShape2D_12ibr")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Pipe" unique_id=1663293300]
 position = Vector2(0, -205.5)
 shape = SubResource("RectangleShape2D_24wc2")
+
+[node name="Label" type="Label" parent="." unique_id=166077628]
+offset_left = 73.0
+offset_top = -72.0
+offset_right = 231.0
+offset_bottom = -23.0
+text = "Test"
+script = ExtResource("1_eg0eg")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1925587033]
 scroll_offset = Vector2(1, 1)

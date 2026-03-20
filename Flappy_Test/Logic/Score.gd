@@ -18,28 +18,37 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
-	self.text = str(x_1)
+	self.text = str(score)
 	x_1 += hor_speed * delta
 	x_2 += hor_speed * delta
 	x_3 += hor_speed * delta
 	x_4 += hor_speed * delta
-	set_Back(x_1, pipe_scored_1)
-	set_Back(x_2, pipe_scored_2)
-	set_Back(x_3, pipe_scored_3)
-	set_Back(x_4, pipe_scored_4)
-	score_Increase(x_1, pipe_scored_1, score)
-	score_Increase(x_2, pipe_scored_2, score)
-	score_Increase(x_3, pipe_scored_3, score)
-	score_Increase(x_4, pipe_scored_4, score)
+	if x_1 < -26 :  
+		x_1 = 400
+		pipe_scored_1 = false
+	if x_2 < -26 :  
+		x_2 = 400
+		pipe_scored_2 = false
+	if x_3 < -26 :  
+		x_3 = 400
+		pipe_scored_3 = false
+	if x_4 < -26 :  
+		x_4 = 400
+		pipe_scored_4 = false
+	pipe_scored_1 = score_Increase(x_1, pipe_scored_1)
+	pipe_scored_2 = score_Increase(x_2, pipe_scored_2)
+	pipe_scored_3 = score_Increase(x_3, pipe_scored_3)
+	pipe_scored_4 = score_Increase(x_4, pipe_scored_4)
 		
 func set_Back(x:float, pipe_scored : bool) -> void:
 	if x < -26 :  
 		x = 400
 		pipe_scored = false
 		
-func score_Increase(x:float, pipe_scored: bool, score) -> void:
+func score_Increase(x:float, pipe_scored: bool):
 	if x < 40 and pipe_scored == false:
 		score += 1
 		#self.text = str(score)
 		pipe_scored = true
+	return(pipe_scored)
 		
