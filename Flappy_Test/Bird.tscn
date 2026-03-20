@@ -1,13 +1,25 @@
 [gd_scene format=3 uid="uid://b3ia2jnqbsth2"]
 
 [ext_resource type="Script" uid="uid://bkthspp7kapis" path="res://Logic/bird.gd" id="1_6w2wo"]
+[ext_resource type="Script" uid="uid://7rt3s7eugqcp" path="res://Logic/Score.gd" id="1_eg0eg"]
 [ext_resource type="Texture2D" uid="uid://bes65vl3bx480" path="res://Gimp_Files/Bird_Wing_Down.png" id="2_67or5"]
 [ext_resource type="Texture2D" uid="uid://cthna0hrfdf34" path="res://Gimp_Files/Bird_Wing_Up.png" id="3_mw7lr"]
 [ext_resource type="Texture2D" uid="uid://f4ytdbdh3bp1" path="res://Gimp_Files/Floor.png" id="4_45gv6"]
 [ext_resource type="Script" uid="uid://c1wg2x7knktn5" path="res://Logic/Pipe.gd" id="5_67or5"]
 [ext_resource type="Texture2D" uid="uid://dvdomw7yt1eqe" path="res://Gimp_Files/Pipe.png" id="6_12ibr"]
+[ext_resource type="Script" uid="uid://c70vmv6js0q3f" path="res://Logic/parallax_Floor.gd" id="6_24wc2"]
 [ext_resource type="Script" uid="uid://bfs5ugds1ksag" path="res://Logic/Pause.gd" id="6_mw7lr"]
 [ext_resource type="Script" uid="uid://cupdq7lfx06uc" path="res://Logic/Restart.gd" id="7_45gv6"]
+[ext_resource type="Texture2D" uid="uid://x3rjsx3ilkv7" path="res://Gimp_Files/Bird_Wing_Down_GodMode.png" id="8_sppor"]
+[ext_resource type="Texture2D" uid="uid://buhqm1cbcinm4" path="res://Gimp_Files/Bird_Wing_Up_GodMode.png" id="9_gheu1"]
+[ext_resource type="Texture2D" uid="uid://c5xvhbogdev4f" path="res://Gimp_Files/Bird_Wing_Down_Offset.png" id="10_tnssq"]
+[ext_resource type="Texture2D" uid="uid://dfetrcw3ebr1f" path="res://Gimp_Files/Bird_Wing_Up_Offset.png" id="11_eg0eg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12ibr"]
+size = Vector2(42, 348)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24wc2"]
+size = Vector2(44, 349)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oqvhg"]
 animations = [{
@@ -20,6 +32,28 @@ animations = [{
 }],
 "loop": true,
 "name": &"Flap",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_sppor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gheu1")
+}],
+"loop": true,
+"name": &"Flap_GodMode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_tnssq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eg0eg")
+}],
+"loop": true,
+"name": &"Flap_Offset",
 "speed": 5.0
 }]
 
@@ -36,71 +70,76 @@ position = Vector2(-1, -72)
 anchor_mode = 0
 limit_left = 0
 limit_top = -80
-limit_right = 300
+limit_right = 290
 limit_bottom = 244
-
-[node name="Bird" type="Area2D" parent="." unique_id=475067402]
-position = Vector2(41, 101)
-script = ExtResource("1_6w2wo")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bird" unique_id=1324712]
-sprite_frames = SubResource("SpriteFrames_oqvhg")
-animation = &"Flap"
-frame_progress = 0.033824936
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird" unique_id=1775459992]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_w3p17")
-
-[node name="Camera2D" type="Camera2D" parent="Bird" unique_id=146554244]
-visible = false
 
 [node name="Label" type="Label" parent="." unique_id=166077628]
 offset_left = 73.0
 offset_top = -72.0
 offset_right = 231.0
 offset_bottom = -23.0
-text = "Placeholder number
-                 5"
+text = "Test"
+script = ExtResource("1_eg0eg")
 
-[node name="Pipe4" type="Area2D" parent="." unique_id=460404273]
-position = Vector2(339, 6)
+[node name="Pipe4" type="Area2D" parent="." unique_id=1236173377]
+position = Vector2(670, 0)
 script = ExtResource("5_67or5")
 
-[node name="Sprite2D" type="Sprite2D" parent="Pipe4" unique_id=1888143083]
+[node name="Sprite2D" type="Sprite2D" parent="Pipe4" unique_id=1543134847]
 texture = ExtResource("6_12ibr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe4" unique_id=629864898]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe4" unique_id=1298457736]
+position = Vector2(0, 206)
+shape = SubResource("RectangleShape2D_12ibr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pipe4" unique_id=1404566635]
+position = Vector2(0, -205.5)
+shape = SubResource("RectangleShape2D_24wc2")
 
 [node name="Pipe3" type="Area2D" parent="." unique_id=1700334223]
-position = Vector2(1017, 18)
+position = Vector2(563, 0)
 script = ExtResource("5_67or5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pipe3" unique_id=806030490]
-position = Vector2(-420, -14)
 texture = ExtResource("6_12ibr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe3" unique_id=1914995224]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe3" unique_id=1404206330]
+position = Vector2(0, 206)
+shape = SubResource("RectangleShape2D_12ibr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pipe3" unique_id=1668698216]
+position = Vector2(0, -205.5)
+shape = SubResource("RectangleShape2D_24wc2")
 
 [node name="Pipe2" type="Area2D" parent="." unique_id=727690289]
-position = Vector2(678, 12)
+position = Vector2(457, 0)
 script = ExtResource("5_67or5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pipe2" unique_id=1434665333]
-position = Vector2(-206, -1)
 texture = ExtResource("6_12ibr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe2" unique_id=2086314955]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe2" unique_id=1531878744]
+position = Vector2(0, 206)
+shape = SubResource("RectangleShape2D_12ibr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pipe2" unique_id=2123618963]
+position = Vector2(0, -205.5)
+shape = SubResource("RectangleShape2D_24wc2")
 
 [node name="Pipe" type="Area2D" parent="." unique_id=1489766578]
-position = Vector2(339, 6)
+position = Vector2(351, 0)
 script = ExtResource("5_67or5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pipe" unique_id=627691498]
-position = Vector2(383, 1)
 texture = ExtResource("6_12ibr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe" unique_id=1104328801]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe" unique_id=1299130474]
+position = Vector2(0, 206)
+shape = SubResource("RectangleShape2D_12ibr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pipe" unique_id=1663293300]
+position = Vector2(0, -205.5)
+shape = SubResource("RectangleShape2D_24wc2")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1925587033]
 scroll_offset = Vector2(1, 1)
@@ -109,11 +148,24 @@ autoscroll = Vector2(-30, 0)
 repeat_times = 90
 follow_viewport = false
 ignore_camera_scroll = true
+script = ExtResource("6_24wc2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=791930931]
 position = Vector2(27, 220)
 texture = ExtResource("4_45gv6")
 centered = false
+
+[node name="Bird" type="Area2D" parent="." unique_id=475067402]
+position = Vector2(40, 102)
+script = ExtResource("1_6w2wo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bird" unique_id=1324712]
+position = Vector2(-2, -7)
+sprite_frames = SubResource("SpriteFrames_oqvhg")
+animation = &"Flap_GodMode"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird" unique_id=1775459992]
+shape = SubResource("RectangleShape2D_w3p17")
 
 [node name="Floor" type="Area2D" parent="." unique_id=107039605]
 
@@ -146,6 +198,17 @@ script = ExtResource("6_mw7lr")
 [node name="TextEdit" type="TextEdit" parent="Control/PausePanel" unique_id=1594384550]
 layout_mode = 2
 text = "PAUSE"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+tab_input_mode = false
+virtual_keyboard_enabled = false
 
 [node name="RestartPanel" type="PanelContainer" parent="Control" unique_id=1916039608]
 layout_mode = 0
@@ -158,7 +221,42 @@ script = ExtResource("7_45gv6")
 [node name="TextEdit" type="TextEdit" parent="Control/RestartPanel" unique_id=1957883748]
 layout_mode = 2
 text = "Press enter to restart"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+tab_input_mode = false
+virtual_keyboard_enabled = false
 
+[connection signal="area_entered" from="Pipe4" to="Pipe4" method="_on_area_entered"]
+[connection signal="area_entered" from="Pipe4" to="Pipe3" method="_on_pipe_4_area_entered"]
+[connection signal="area_entered" from="Pipe4" to="Pipe2" method="_on_pipe_4_area_entered"]
+[connection signal="area_entered" from="Pipe4" to="Pipe" method="_on_pipe_4_area_entered"]
+[connection signal="area_entered" from="Pipe4" to="Parallax2D" method="_on_pipe_4_area_entered"]
+[connection signal="area_entered" from="Pipe4" to="Bird" method="_on_pipe_4_area_entered"]
+[connection signal="area_entered" from="Pipe3" to="Pipe4" method="_on_pipe_3_area_entered"]
+[connection signal="area_entered" from="Pipe3" to="Pipe3" method="_on_area_entered"]
+[connection signal="area_entered" from="Pipe3" to="Pipe2" method="_on_pipe_3_area_entered"]
+[connection signal="area_entered" from="Pipe3" to="Pipe" method="_on_pipe_3_area_entered"]
+[connection signal="area_entered" from="Pipe3" to="Parallax2D" method="_on_pipe_3_area_entered"]
+[connection signal="area_entered" from="Pipe3" to="Bird" method="_on_pipe_3_area_entered"]
+[connection signal="area_entered" from="Pipe2" to="Pipe4" method="_on_pipe_2_area_entered"]
+[connection signal="area_entered" from="Pipe2" to="Pipe3" method="_on_pipe_2_area_entered"]
+[connection signal="area_entered" from="Pipe2" to="Pipe2" method="_on_area_entered"]
+[connection signal="area_entered" from="Pipe2" to="Pipe" method="_on_pipe_2_area_entered"]
+[connection signal="area_entered" from="Pipe2" to="Parallax2D" method="_on_pipe_2_area_entered"]
+[connection signal="area_entered" from="Pipe2" to="Bird" method="_on_pipe_2_area_entered"]
+[connection signal="area_entered" from="Pipe" to="Pipe4" method="_on_pipe_area_entered"]
+[connection signal="area_entered" from="Pipe" to="Pipe3" method="_on_pipe_area_entered"]
+[connection signal="area_entered" from="Pipe" to="Pipe2" method="_on_pipe_area_entered"]
+[connection signal="area_entered" from="Pipe" to="Pipe" method="_on_area_entered"]
+[connection signal="area_entered" from="Pipe" to="Parallax2D" method="_on_pipe_area_entered"]
+[connection signal="area_entered" from="Pipe" to="Bird" method="_on_pipe_area_entered"]
 [connection signal="area_entered" from="Floor" to="Bird" method="_on_floor_area_entered"]
 [connection signal="area_entered" from="Floor" to="Control/PausePanel" method="_on_floor_area_entered"]
 [connection signal="area_entered" from="Floor" to="Control/RestartPanel" method="_on_floor_area_entered"]
