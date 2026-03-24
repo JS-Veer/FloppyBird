@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bkthspp7kapis" path="res://Logic/bird.gd" id="1_6w2wo"]
 [ext_resource type="Script" uid="uid://7rt3s7eugqcp" path="res://Logic/Score.gd" id="1_eg0eg"]
+[ext_resource type="Script" uid="uid://dk7pf8b26fl6j" path="res://Logic/background_paralax.gd" id="1_q2ja3"]
 [ext_resource type="Texture2D" uid="uid://bes65vl3bx480" path="res://Gimp_Files/Bird_Wing_Down.png" id="2_67or5"]
+[ext_resource type="Texture2D" uid="uid://isaa2xuqpg6w" path="res://Gimp_Files/Background_Weird.png" id="2_q2ja3"]
 [ext_resource type="Texture2D" uid="uid://cthna0hrfdf34" path="res://Gimp_Files/Bird_Wing_Up.png" id="3_mw7lr"]
 [ext_resource type="Texture2D" uid="uid://f4ytdbdh3bp1" path="res://Gimp_Files/Floor.png" id="4_45gv6"]
 [ext_resource type="Script" uid="uid://c1wg2x7knktn5" path="res://Logic/Pipe.gd" id="5_67or5"]
@@ -64,6 +66,20 @@ size = Vector2(17, 17)
 size = Vector2(300, 23)
 
 [node name="Node2D" type="Node2D" unique_id=1182742471]
+
+[node name="Background_Paralax" type="Parallax2D" parent="." unique_id=1156050856]
+scroll_offset = Vector2(-44, 51)
+repeat_size = Vector2(900, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 90
+follow_viewport = false
+ignore_camera_scroll = true
+script = ExtResource("1_q2ja3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background_Paralax" unique_id=1273619841]
+position = Vector2(-441, -127)
+texture = ExtResource("2_q2ja3")
+centered = false
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=285280330]
 position = Vector2(-1, -72)
@@ -141,7 +157,7 @@ offset_bottom = -23.0
 text = "Test"
 script = ExtResource("1_eg0eg")
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1925587033]
+[node name="Floor_Paralax" type="Parallax2D" parent="." unique_id=1925587033]
 scroll_offset = Vector2(1, 1)
 repeat_size = Vector2(15, 0)
 autoscroll = Vector2(-30, 0)
@@ -150,7 +166,7 @@ follow_viewport = false
 ignore_camera_scroll = true
 script = ExtResource("6_24wc2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=791930931]
+[node name="Sprite2D" type="Sprite2D" parent="Floor_Paralax" unique_id=791930931]
 position = Vector2(27, 220)
 texture = ExtResource("4_45gv6")
 centered = false
@@ -237,26 +253,32 @@ virtual_keyboard_enabled = false
 [connection signal="area_entered" from="Pipe4" to="Pipe3" method="_on_pipe_4_area_entered"]
 [connection signal="area_entered" from="Pipe4" to="Pipe2" method="_on_pipe_4_area_entered"]
 [connection signal="area_entered" from="Pipe4" to="Pipe" method="_on_pipe_4_area_entered"]
-[connection signal="area_entered" from="Pipe4" to="Parallax2D" method="_on_pipe_4_area_entered"]
+[connection signal="area_entered" from="Pipe4" to="Floor_Paralax" method="_on_pipe_4_area_entered"]
 [connection signal="area_entered" from="Pipe4" to="Bird" method="_on_pipe_4_area_entered"]
+[connection signal="area_entered" from="Pipe4" to="Background_Paralax" method="_on_pipe_4_area_entered"]
 [connection signal="area_entered" from="Pipe3" to="Pipe4" method="_on_pipe_3_area_entered"]
 [connection signal="area_entered" from="Pipe3" to="Pipe3" method="_on_area_entered"]
 [connection signal="area_entered" from="Pipe3" to="Pipe2" method="_on_pipe_3_area_entered"]
 [connection signal="area_entered" from="Pipe3" to="Pipe" method="_on_pipe_3_area_entered"]
-[connection signal="area_entered" from="Pipe3" to="Parallax2D" method="_on_pipe_3_area_entered"]
+[connection signal="area_entered" from="Pipe3" to="Floor_Paralax" method="_on_pipe_3_area_entered"]
 [connection signal="area_entered" from="Pipe3" to="Bird" method="_on_pipe_3_area_entered"]
+[connection signal="area_entered" from="Pipe3" to="Background_Paralax" method="_on_pipe_3_area_entered"]
 [connection signal="area_entered" from="Pipe2" to="Pipe4" method="_on_pipe_2_area_entered"]
 [connection signal="area_entered" from="Pipe2" to="Pipe3" method="_on_pipe_2_area_entered"]
 [connection signal="area_entered" from="Pipe2" to="Pipe2" method="_on_area_entered"]
 [connection signal="area_entered" from="Pipe2" to="Pipe" method="_on_pipe_2_area_entered"]
-[connection signal="area_entered" from="Pipe2" to="Parallax2D" method="_on_pipe_2_area_entered"]
+[connection signal="area_entered" from="Pipe2" to="Floor_Paralax" method="_on_pipe_2_area_entered"]
 [connection signal="area_entered" from="Pipe2" to="Bird" method="_on_pipe_2_area_entered"]
+[connection signal="area_entered" from="Pipe2" to="Background_Paralax" method="_on_pipe_2_area_entered"]
 [connection signal="area_entered" from="Pipe" to="Pipe4" method="_on_pipe_area_entered"]
 [connection signal="area_entered" from="Pipe" to="Pipe3" method="_on_pipe_area_entered"]
 [connection signal="area_entered" from="Pipe" to="Pipe2" method="_on_pipe_area_entered"]
 [connection signal="area_entered" from="Pipe" to="Pipe" method="_on_area_entered"]
-[connection signal="area_entered" from="Pipe" to="Parallax2D" method="_on_pipe_area_entered"]
+[connection signal="area_entered" from="Pipe" to="Floor_Paralax" method="_on_pipe_area_entered"]
 [connection signal="area_entered" from="Pipe" to="Bird" method="_on_pipe_area_entered"]
+[connection signal="area_entered" from="Pipe" to="Background_Paralax" method="_on_pipe_area_entered"]
+[connection signal="area_entered" from="Floor" to="Floor_Paralax" method="_on_floor_area_entered"]
 [connection signal="area_entered" from="Floor" to="Bird" method="_on_floor_area_entered"]
 [connection signal="area_entered" from="Floor" to="Control/PausePanel" method="_on_floor_area_entered"]
 [connection signal="area_entered" from="Floor" to="Control/RestartPanel" method="_on_floor_area_entered"]
+[connection signal="area_entered" from="Floor" to="Background_Paralax" method="_on_floor_area_entered"]

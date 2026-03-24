@@ -1,6 +1,6 @@
 extends Parallax2D
 
-const DEFAULT_AUTOSCROLL_SPEED : Vector2 = Vector2(-30,0)
+const DEFAULT_AUTOSCROLL_SPEED : Vector2 = Vector2(-10,0)
 var speed : int = 0
 
 @onready var autoscroll_var : Vector2 = autoscroll
